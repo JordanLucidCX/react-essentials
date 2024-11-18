@@ -1,9 +1,13 @@
 import { useState } from "react";
-import TabButton from "../TabButton/TabButton";
+
 import ConceptPreview from "../ConceptPreview/ConceptPreview";
-import { TAB_BUTTONS } from "../../data/tabButtonData";
-import { DYNAMIC_CONTENTS } from "../../data/dynamicContentData";
+import TabButton from "../TabButton/TabButton";
 import Section from "../Section/Section";
+import Tabs from "../Tabs/Tabs";
+
+import { TAB_BUTTONS } from "../../data/tabButtonData"
+import { DYNAMIC_CONTENTS } from "../../data/dynamicContentData";
+
 import "./examples.css";
 
 function Examples() {
@@ -28,10 +32,7 @@ function Examples() {
 
     return (
         <Section id="examples" title="Examples">
-            <menu>
-                {TAB_BUTTONS.map(({ id, title }) => <TabButton key={id} onClick={() => handleClick({ id, title })} isSelected={selectedTabContent?.buttonId === id}>{title}</TabButton>)}
-            </menu>
-            {renderedTabContent}
+            <Tabs buttons={TAB_BUTTONS.map(({ id, title }) => <TabButton key={id} onClick={() => handleClick({ id, title })} isSelected={selectedTabContent?.buttonId === id}>{title}</TabButton>)}>{renderedTabContent}</Tabs>
         </Section>
     );
 }
